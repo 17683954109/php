@@ -1,0 +1,37 @@
+//提交页面配置
+
+<?php    //php的开始地方，用<?php开始，后面至少跟一个空格来区分代码部分(定界符)
+header('ContentType:text/html;charset=utf-8');  //告诉浏览器，此时生成的文件类型，以及使用的编码
+?>      //php结束的地方，如果后面有不同类型的代码，用?>来结束PHP代码块，如果为文件末尾，可以不写
+<!DOCTYPE html>       //php中使用html代码，是被允许的，这种方式称为‘混编’
+<html>
+<head>
+	<title>GET方式传值</title>
+</head>
+<body>
+<!-- <ul>
+	<li><a href="GET1.php?id=1">新闻列表1</a></li>     //URL中使用get方式提交数据，不影响页面跳转
+	<li><a href="GET1.php?id=2">新闻列表2</a></li>
+	<li><a href="GET1.php?id=3">新闻列表3</a></li>
+	<li><a href="GET1.php?id=4">新闻列表4</a></li>
+	<li><a href="GET1.php?id=5">新闻列表5</a></li>
+	<li><a href="GET1.php?id=6">新闻列表6</a></li>
+</ul> -->
+<form action="GET1.php" method="post">         //action 要提交到的页面，method 是提交方式、此处为POST
+	爱好:
+	<input type="checkbox" name="habits[]" value="钱">钱    //提交复选框数据时，直接使用name会被最后一个数据所覆盖，此时使用[]符号告诉服务器这是一个数组
+	<input type="checkbox" name="habits[]" value="策">策
+	<input type="checkbox" name="habits[]" value="音乐">音乐
+	<input type="checkbox" name="habits[]" value="游戏">游戏
+	<input type="submit" name="tj" value="提交">
+</form>
+</body>
+</html>
+
+////接收页面配置
+
+<?php
+header('ContentType:text/html;charset=utf-8');
+$habits = $_POST['habits'];        //用一个变量来存储POST方式提交过来的值，此时变量$habits存储的数据为一个数组
+echo implode('--', $habits);       //implode()函数用来转换数组为字符串，该函数有两个值，一个是连接符，一个是要转换的数组
+?>

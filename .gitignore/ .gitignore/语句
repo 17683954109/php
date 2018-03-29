@@ -1,0 +1,72 @@
+//for循环
+
+<?php
+for ($i=1; $i <=10 ; $i++) { 
+	echo 'test,<br/>';
+}
+//for循环用来控制语句执行，当i的值为10时，终止循环
+
+//while循环
+$p = 1;  //由于while循环只有条件，所以我们需要预先声明一个变量
+while ($p <= 10) {
+	echo 'Hello Word!';
+	$p++;    //$p的值如果不发生变化，那么这个循环就是一个死循环
+}
+
+
+//if语句
+//1：如果就：
+$s = 1;
+$b = 1;
+if ($s == $b) {
+	echo 'Hello Word!';
+	$s++;
+}//$s 等于$b,所以此时会输出'Hello Word！'
+
+//2：如果/否则
+$s = 1;
+$b = 2;
+if ($s == $b) {
+	echo 'Hello Word!';
+	$s++;
+}//$s 不等于$b,所以此时不会输出'Hello Word！'
+else{
+  echo 'huy';
+}//条件不成立时执行的语句
+
+
+//3：如果/否则就/或者
+$s = 1;
+$b = 2;
+if ($s == $b) {
+	echo 'Hello Word!';
+	$s++;
+}//$s 不等于$b,所以此时不会输出'Hello Word！'
+elseif($s<$b){    //对结果进行二次判断
+  echo 'xia';
+}
+else{
+  echo 'huy';
+}//条件不成立时执行的语句
+
+
+//do while循环
+$y = 1;
+do{
+	echo 'jj';
+	$y++;   //防止死循环
+}while ($y <= 10)  //循环的条件
+
+//switch语句
+
+$c = 1;  
+switch ($c) {    //要判断的量
+	case '1':       //如果$c = 1;就执行下面的语句
+		echo '一';
+		break;        //打断后续语句的执行；跳出当前循环
+	
+	case '2':
+		echo '二';
+		break;
+}
+?>

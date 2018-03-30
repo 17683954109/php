@@ -78,3 +78,9 @@ octdec();八进制转十进制
 
 hexdec();十六进制转十进制
 
+//任意进制之间转换
+
+base_convert('要转换的数',当前进制,目标进制);
+//例:
+echo base_convert('0xfff',16,10);
+

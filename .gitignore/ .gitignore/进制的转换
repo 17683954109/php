@@ -1,0 +1,8 @@
+//其他进制转十进制
+
+<?php
+header('Content-Type:text/html;charset=utf-8');
+//十六进制转十进制
+
+0xff
+

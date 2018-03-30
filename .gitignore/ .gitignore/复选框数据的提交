@@ -11,14 +11,14 @@ header('ContentType:text/html;charset=utf-8');  //告诉浏览器，此时生成
 	<title>GET方式传值</title>
 </head>
 <body>
-<!-- <ul>
+<ul>
 	<li><a href="GET1.php?id=1">新闻列表1</a></li>     //URL中使用get方式提交数据，不影响页面跳转
 	<li><a href="GET1.php?id=2">新闻列表2</a></li>
 	<li><a href="GET1.php?id=3">新闻列表3</a></li>
 	<li><a href="GET1.php?id=4">新闻列表4</a></li>
 	<li><a href="GET1.php?id=5">新闻列表5</a></li>
 	<li><a href="GET1.php?id=6">新闻列表6</a></li>
-</ul> -->
+</ul>
 <form action="GET1.php" method="post">         //action 要提交到的页面，method 是提交方式、此处为POST
 	爱好:
 	<input type="checkbox" name="habits[]" value="钱">钱    //提交复选框数据时，直接使用name会被最后一个数据所覆盖，此时使用[]符号告诉服务器这是一个数组

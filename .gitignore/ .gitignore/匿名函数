@@ -1,7 +1,7 @@
 //第一种匿名函数，用一个变量来存储匿名函数
 
 <?php
-header('ContentType:text/html;charset=utf-8');
+header('Content-Type:text/html;charset=utf-8');
 $a = function (){
 	echo 'Hello Word!';
 };                //用一个变量来存储匿名函数

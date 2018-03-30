@@ -3,7 +3,7 @@
 //提交页面配置
 
 <?php    //php的开始地方，用<?php开始，后面至少跟一个空格来区分代码部分(定界符)
-header('ContentType:text/html;charset=utf-8');  //告诉浏览器，此时生成的文件类型，以及使用的编码
+header('Content-Type:text/html;charset=utf-8');  //告诉浏览器，此时生成的文件类型，以及使用的编码
 ?>      //php结束的地方，如果后面有不同类型的代码，用?>来结束PHP代码块，如果为文件末尾，可以不写
 <!DOCTYPE html>       //php中使用html代码，是被允许的，这种方式称为‘混编’
 <html>

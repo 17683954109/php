@@ -1,0 +1,27 @@
+<?php
+header('ContentType:text/html;charset=utf-8');
+
+//可变变量
+
+
+$a = 'php';
+$php = 'hello word';
+echo $$a;       //$a中存储的值为变量$php的变量名，相当于此时输出的的是$php
+
+//可变函数
+
+function jpg(){
+  echo '文件格式为jpg';
+}
+function gif(){
+  echo '文件格式为gif';
+}
+function png(){
+  echo '文件格式为png';
+}
+
+$file = '1.jpg';
+$arr = explode('.';$file);    //用explode()函数来分割出文件的后缀名,得到函数的名字
+$funcName = $arr['1'];          //用一个变量来存储得到的函数名
+$funcName();                  //$funcName 的值为jpg,相当于jip()调用函数
+?>

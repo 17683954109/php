@@ -21,7 +21,7 @@ function png(){
 }
 
 $file = '1.jpg';
-$arr = explode('.';$file);    //用explode()函数来分割出文件的后缀名,得到函数的名字
+$arr = explode('.',$file);    //用explode()函数来分割出文件的后缀名,得到函数的名字
 $funcName = $arr['1'];          //用一个变量来存储得到的函数名
 $funcName();                  //$funcName 的值为jpg,相当于jip()调用函数
 ?>

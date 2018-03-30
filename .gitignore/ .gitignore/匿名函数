@@ -1,0 +1,13 @@
+<?php
+header('ContentType:text/html;charset=utf-8');
+$a = function (){
+	echo 'Hello Word!';
+};                //用一个变量来存储匿名函数
+$a();             //调用方式就是变量名加上()
+
+$g = function ($h,$u){
+	echo $h + $u;
+};
+echo '<br/>';
+$g(7,8);          //传参方式和普通函数没有区别
+?>

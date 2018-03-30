@@ -1,5 +1,5 @@
 <?php
-header('ContentType:text/html;charset=utf-8');
+header('Content-Type:text/html;charset=utf-8');
 
 //可变变量
 

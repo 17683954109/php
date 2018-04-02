@@ -1,0 +1,35 @@
+<?php
+header('Content-Type:text/html;charset=utf-8');
+/*三元运算符
+  语法：
+  表达式1 ? 表达式2 : 表达式3
+原理：
+  计算表达式1的值，如果为真返回 表达式2，如果为假则返回 表达式3
+*/
+//例：
+$a = 100;
+$b = 120;
+var_dump($a > $b ? $a : $b);
+
+/*
+  空合并运算符
+    语法：
+    表达式1 ?? 表达式2 ?? 表达式n
+    
+  原理：
+  从第一个表达式开始查找，找到的第一个值不为NULL（空）的表达式作为整个语句的运行结果
+  
+  例：
+ $page = $_GET['page'] ?? 1;
+ echo $page;
+*/
+
+/*
+  短路运算符（or）
+  条件全部为假结果才为假
+  例：
+  
+  $coon = @mysqli_connect('localhost','root','root','test') or die('连接失败');
+  var_dump($conn);
+*/
+?>

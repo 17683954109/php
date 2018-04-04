@@ -1,9 +1,11 @@
-//return返回值
+//return返回值:会打断后续函数语句的执行（终止函数并返回值）
 <?php
 header('Content-Type:text/html;charset=utf-8');
 function tt($y,$z){
 	$u = $y > $z ? $y:$z;
 	return $u;    //return关键字加变量名，将$u的值返回，当调用时，就把$u的值给到调用处，可以使用一个变量来接收函数返回值
+	$t = $z;
+	return $t;	//此处的$t不会返回
 }
 function yy(){
 	$b = tt(6,8);       // 这里就是调用处，$b 的值就是函数tt()返回的值，也就是函数tt()中的变量$u

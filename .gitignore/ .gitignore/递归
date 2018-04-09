@@ -1,5 +1,5 @@
 <?php
-      //知道小问题的答案，并知道计算的公式和方法，就可以得知大问题的答案
+      //知道小问题的答案，并知道计算的公式和方法，就可以得知大问题的答案（函数内调用函数本身）
 header('Content-Type:text/html;charset=utf-8');
 function qiuhe($n){
 	if ($n==1||$n==2) {

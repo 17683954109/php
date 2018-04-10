@@ -1,0 +1,16 @@
+<?php
+
+//disk_total_space() 获得磁盘总空间大小
+
+//disk_free_space()  获得磁盘可用空间大小
+
+
+echo getcwd();    //获取并输出当前工作目录，getcwd()获得当前工作目录
+echo '<br/>';
+chdir('e:');      //切换工作目录
+echo getcwd();
+mkdir('你好');    //创建文件夹
+/*如果乱码：
+iconv('utf-8','gb2312','字符串');
+*/
+?>

@@ -50,9 +50,11 @@ $dir -> close();	//关闭访问
 header('Content-Type:text/html;charset=utf-8');
 $fileName = 'E:/时尚靓丽.psd';
 date_default_timezone_set('UTC');     //设置时区
+$size = filesize($fileName)/1024/1024;		//获得文件大小，并转换为以 MB为单位
 $cTime = filectime($fileName)+8*3600;     //获得文件创建的时间，并加上时间差
 $mTime = filemtime($fileName)+8*3600;     //获得文件修改的时间，并加上时间差
 $aTime = fileatime($fileName)+8*3600;     //获得文件访问的时间，并加上时间差
+echo '文件的大小是：'.round($size,2);		//round()四舍五入
 echo '文件的创建时间是：'.date('Y-m-d H:i:s',$cTime);    //date()使时间以特定的格式输出
 echo '<br/>';
 echo '文件的修改时间是：'.date('Y-m-d H:i:s',$mTime);

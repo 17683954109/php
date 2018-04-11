@@ -49,6 +49,11 @@ $dir -> close();	//关闭访问
 <?php
 header('Content-Type:text/html;charset=utf-8');
 $fileName = 'E:/时尚靓丽.psd';
+
+/*如果是中文文件名，可能需要进行转码，是否转码根据实际情况而定：
+	$fileName = iconv('utf-8','gb2312','E:/时尚靓丽.psd');
+*/
+
 date_default_timezone_set('UTC');     //设置时区
 $size = filesize($fileName)/1024/1024;		//获得文件大小，并转换为以 MB为单位
 $cTime = filectime($fileName)+8*3600;     //获得文件创建的时间，并加上时间差
@@ -61,3 +66,5 @@ echo '文件的修改时间是：'.date('Y-m-d H:i:s',$mTime);
 echo '<br/>';
 echo '文件的访问时间是：'.date('Y-m-d H:i:s',$aTime);
 ?>
+
+

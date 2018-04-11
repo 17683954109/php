@@ -43,6 +43,7 @@ while (false!==($fileName = $dir -> read())) {    //$dir -> read() 一次读取�
 	echo $ss.'.&nbsp;'.$fileName.'<br>';
 	$ss++;
 }
+$dir -> close();	//关闭访问
 ?>
 
 <?php

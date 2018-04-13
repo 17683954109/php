@@ -1,0 +1,55 @@
+//html页面
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>输入路径</title>
+</head>
+<body>
+	<form action="FileSystem5.php" method="get">
+		<input type="text" name="ar">     //获得初始路径（盘符）
+		<input type="submit" name="tj" placeholder="确定">
+	</form>
+</body>
+</html>
+
+//php页面配置
+
+<?php
+header('Content-Type:text/html;charset=utf-8');
+function readsf($se) {
+	$dir = dir($se);      //因为要用到dir对象，所以使用变量
+	while (false!==($fileName = ($dir -> read()))) {      //当dir()函数返回false这个循环就结束了
+		if ($fileName=='.'||$fileName=='..') {
+			continue;               //读取出的文件夹中没有用的，剔除掉
+		}else{
+		if (is_dir($se.$fileName)&&$fileName!='Documents and Settings'&&$fileName!='System Volume Information') {
+				$eee=$se;               //判断路径是否是一个文件夹，并过滤掉没用的文件夹
+			if (!file_exists($fileName)) {      //php7.1之前的版本能以utf-8的编码读取文件，所以php7.1之前的版本不需要对if内的条件进行取反，即去掉'!'号
+				$ee=$fileName;          //用判断文件或文件夹是否存在的方法来判断是否转码   
+			}else{
+				$ee= iconv('gb2312', 'utf-8',$fileName);
+			}
+			
+			echo '文件夹：'.'<a href="FileSystem5.php?ar='.$eee.$ee.'">'.$ee.'</a>'.'<br>';       //用a标签get传值将当前获得的路径作为下一次函数执行的路径，即可一层一层的进行访问
+		}
+		else{
+			 if (!file_exists($fileName)) {     //用判断文件或文件夹是否存在的方法来判断是否转码      //php7.1之前的版本能以utf-8的编码读取文件，所以php7.1之前的版本不需要对if内的条件进行取反，即去掉'!'号
+			 	$filesName=$fileName;
+			}else{
+				$filesName = iconv('gb2312', 'utf-8', $fileName);
+			}
+			echo '文件：'.$filesName.'<br>';
+		}
+		}
+	}
+}
+$a =0;
+$a = $_GET['ar'];
+if (!file_exists($a)) {
+	$a = iconv('utf-8','gb2312',$a);
+}
+readsf($a.'/');
+?>

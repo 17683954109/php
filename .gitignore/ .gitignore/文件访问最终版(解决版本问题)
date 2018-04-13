@@ -45,6 +45,7 @@ function readsf($se) {
 		}
 		}
 	}
+	$dir->close();
 }
 $a =0;
 $a = $_GET['ar'];

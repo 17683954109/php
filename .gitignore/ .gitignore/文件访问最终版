@@ -1,0 +1,52 @@
+<?php
+header('Content-Type:text/html;charset=utf-8');
+function readsf($se) {
+	$dir = dir($se);
+	while (false!==($fileName = ($dir -> read()))) {
+		if ($fileName=='.'||$fileName=='..') {
+			continue;
+		}else{
+		if (is_dir($se.$fileName)&&$fileName!='Documents and Settings'&&$fileName!='System Volume Information') {
+				$eee=$se;
+				if (7.1 >PHP_VERSION) {
+					if (file_exists($fileName)) {
+				$ee=$fileName;
+			}else{
+				$ee= iconv('gb2312', 'utf-8',$fileName);
+			}
+				}else{
+			if (!file_exists($fileName)) {
+				$ee=$fileName;
+			}else{
+				$ee= iconv('gb2312', 'utf-8',$fileName);
+			}
+			}
+			
+			echo '文件夹：'.'<a href="FileSystem5.php?ar='.$eee.$ee.'">'.$ee.'</a>'.'<br>';
+		}
+		else{
+			if (7.1>PHP_VERSION) {
+				 if (file_exists($fileName)) {
+			 	$filesName=$fileName;
+			}else{
+				$filesName = iconv('gb2312', 'utf-8', $fileName);
+			}
+			}else{
+			 if (!file_exists($fileName)) {
+			 	$filesName=$fileName;
+			}else{
+				$filesName = iconv('gb2312', 'utf-8', $fileName);
+			}
+			}
+			echo '文件：'.$filesName.'<br>';
+		}
+		}
+	}
+}
+$a =0;
+$a = $_GET['ar'];
+if (!file_exists($a)) {
+	$a = iconv('utf-8','gb2312',$a);
+}
+readsf($a.'/');
+?>

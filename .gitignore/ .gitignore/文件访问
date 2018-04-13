@@ -8,6 +8,7 @@
 	<title>输入路径</title>
 </head>
 <body>
+	<p>路径结尾不要添加'/'</p>
 	<form action="FileSystem5.php" method="get">
 		<input type="text" name="ar">     //获得初始路径（盘符）
 		<input type="submit" name="tj" placeholder="确定">

@@ -25,6 +25,9 @@ function readsf($se) {
 			echo '文件夹：'.'<a href="FileSystem5.php?ar='.$eee.$ee.'">'.$ee.'</a>'.'<br>';
 		}
 		else{
+			if ($fileName=='System Volume Information'||$fileName=='Documents and Settings') {
+				continue;
+			}
 			if (7.1>PHP_VERSION) {
 				 if (file_exists($fileName)) {
 			 	$filesName=$fileName;

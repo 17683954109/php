@@ -47,8 +47,8 @@ function readsf($se) {
 	}
 }
 $a =0;
-$a = $_GET['ar'];
-if (!file_exists($a)) {
+$a = $_GET['ar'];	//以get传过来的数值作为函数运行的参数
+if (!file_exists($a)) {		//当文件夹不能被正常读取时进行转码，防止报错
 	$a = iconv('utf-8','gb2312',$a);
 }
 readsf($a.'/');

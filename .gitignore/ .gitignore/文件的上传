@@ -1,0 +1,60 @@
+//html页面的配置
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>选择上传的文件</title>
+</head>
+<body>
+<form action="resoult.php" method="post" enctype="multipart/form-data">
+	<input type="file" name="sss">
+	<input type="submit" name="tj" value="上传">
+</form>
+</body>
+</html>
+
+
+//php页面的配置
+
+
+<?php
+header('Content-Type:text/html;charset=utf-8');
+date_default_timezone_set('UTC');
+function resoult($type,$path,$size,$name){
+	if (!file_exists($path)) {
+		mkdir($path);
+	}
+	if (is_uploaded_file($_FILES[$name]['tmp_name'])) {
+		$type1=explode('/', $_FILES[$name]['type']);
+		$class=explode('.',$_FILES[$name]['name']);
+		if ($_FILES[$name]['size']<=$size*1024*1024) {
+		for ($i=0; $i <count($type) ; $i++) { 
+			if ($class[count($class)-1]==$type[$i]) {
+				if (!file_exists($path.'/'.$class[count($class)-1].'/')) {
+					mkdir($path.'/'.$class[count($class)-1].'/');
+					$aa=date('Ymd His',time()+8*3600);
+					move_uploaded_file($_FILES[$name]['tmp_name'],$path.'/'.$class[count($class)-1].'/'.$aa.'.'.$class[count($class)-1]);
+					echo '文件上传成功！目录：'.$path.'/'.$class[count($class)-1].'/'.$aa.'.'.$class[count($class)-1];
+					return;
+				}else{
+					$aaa=date('Ymd His',time()+8*3600);
+					move_uploaded_file($_FILES[$name]['tmp_name'],$path.'/'.$class[count($class)-1].'/'.$aaa.'.'.$class[count($class)-1]);
+					echo '文件上传成功！目录：'.$path.'/'.$class[count($class)-1].'/'.$aaa.'.'.$class[count($class)-1];
+					return;
+				}
+			}else{
+				continue;
+			}
+		}
+		}else{
+			echo '上传失败：文件大小或类型不支持';
+		}
+		
+	}
+}
+  //resoult参数说明：resoult(允许上传的文件类型,存储在服务器的目录，允许上传的最大文件大小，form表单的name)
+  //参数可灵活变更，函数更为灵活
+resoult(array('jpg','txt','png','zip','rar','gif','html'),'d:/UploadFile',20,'sss');
+?>

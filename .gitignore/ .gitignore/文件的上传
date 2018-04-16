@@ -21,36 +21,32 @@
 
 <?php
 header('Content-Type:text/html;charset=utf-8');
-date_default_timezone_set('UTC');
-function resoult($type,$path,$size,$name){
-	if (!file_exists($path)) {
-		mkdir($path);
+date_default_timezone_set('UTC');	//以时间来命名文件，所以需要设置时区
+function resoult($type,$path,$size,$name){	//参数分别为：允许上传的文件类型，文件存储在服务器的目录，允许的文件大小，form表单的name
+	if (!file_exists($path)) {	
+		mkdir($path);		//当你所指定的文件夹不存在时，自动创建
 	}
-	if (is_uploaded_file($_FILES[$name]['tmp_name'])) {
-		$type1=explode('/', $_FILES[$name]['type']);
-		$class=explode('.',$_FILES[$name]['name']);
-		if ($_FILES[$name]['size']<=$size*1024*1024) {
-		for ($i=0; $i <count($type) ; $i++) { 
+	if (is_uploaded_file($_FILES[$name]['tmp_name'])) {	//判断文件是否是用户上传的
+		$class=explode('.',$_FILES[$name]['name']);	//分割上传的文件名，得到用户上传文件的类型
+		if ($_FILES[$name]['size']<=$size*1024*1024) {	//判断文件是否超过最大文件大小
+		for ($i=0; $i <count($type) ; $i++) { 		//for循环遍历取值，当允许的文件类型和分割出来的文件类型相等时，执行文件存储
 			if ($class[count($class)-1]==$type[$i]) {
-				if (!file_exists($path.'/'.$class[count($class)-1].'/')) {
+				if (!file_exists($path.'/'.$class[count($class)-1].'/')) {	//当类型文件夹不存在时，自动创建
 					mkdir($path.'/'.$class[count($class)-1].'/');
 					$aa=date('Ymd His',time()+8*3600);
 					move_uploaded_file($_FILES[$name]['tmp_name'],$path.'/'.$class[count($class)-1].'/'.$aa.'.'.$class[count($class)-1]);
 					echo '文件上传成功！目录：'.$path.'/'.$class[count($class)-1].'/'.$aa.'.'.$class[count($class)-1];
-					return;
-				}else{
+					return;		//文件已存储则函数停止
+				}else{				//类型文件夹存在，则执行存储文件
 					$aaa=date('Ymd His',time()+8*3600);
 					move_uploaded_file($_FILES[$name]['tmp_name'],$path.'/'.$class[count($class)-1].'/'.$aaa.'.'.$class[count($class)-1]);
 					echo '文件上传成功！目录：'.$path.'/'.$class[count($class)-1].'/'.$aaa.'.'.$class[count($class)-1];
-					return;
+					return;		//文件已存储则函数停止
 				}
-			}else{
-				continue;
 			}
 		}
-		}else{
-			echo '上传失败：文件大小或类型不支持';
 		}
+			echo '上传失败：文件大小或类型不支持';		//能执行到这一句，说明用户上传的文件不符合你设置的要求
 		
 	}
 }

@@ -1,0 +1,35 @@
+<?php
+header('Content-Type:text/html;charset=utf-8');
+class onload{           //类的创建语法: class 类名{}
+	var $name;            //声明类中的变量
+	var $sex;
+	var $id;
+	function setName($name){    //成员函数
+		$this->name=$name;        //$this就是类本身，这里就是调用类本身的对象，name就是上面声明的变量$name
+	}
+	function getName(){
+		echo $this->name.PHP_EOL;         //PHP_EOL就是PHP的换行(空格)
+	}
+	function setSex($sex){
+		$this->sex=$sex;
+	}
+	function getSex(){
+		echo $this->sex.PHP_EOL;
+	}
+	function setId($id){
+		$this->id=$id;
+	}
+	function getId(){
+		echo $this->id.PHP_EOL;
+	}
+}
+$Sex=new onload;            //实例化类，new是关键字后跟一个空格和类名
+$Name=new onload;
+$Id=new onload;
+$Sex->setSex('女');        //调用该类下的成员函数(就是对象),因为此成员函数在类中给了一个形参，这里必须向其传递参数(实参)
+$Name->setName('李四');
+$Id->setId('56789');
+$Sex->getSex();           //调用该类下的成员函数，因为这个成员函数在类中没有给参数，所以直接调用
+$Name->getName();
+$Id->getId();
+?>

@@ -1,0 +1,23 @@
+<?php
+header('Content-Type:text/html;charset=utf-8');
+class myclass{
+  var $name;
+  var $sex;
+  function _construct($Name,$Sex){        //构造函数 作用就是对类中的所有变量进行初始化，构造函数就是名字必须为:_construct,必须有参数，对类中的变量进行初始化
+  $this->name=$Name;
+  $this->sex=$Sex;
+  }
+  function getName(){
+  echo $this->name.PHP_EOL:
+  }
+  function getSex(){
+  echo $this->sex.PHP_EOL:
+  }
+}
+$Sex=new myclass('张三','男');       //因为存在构造函数，直接将相应的值直接传给类即可，类会自动将数值传给构造函数
+$Name=new myclass('李四','女');
+$Sex->getName();
+$Name->getName();
+$Sex->getSex();
+$Name->getSex();
+?>

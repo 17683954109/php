@@ -6,6 +6,8 @@
 
 if($a==3):
   echo 'ok';
+else:
+  echo 'no';
 endif;
 */
 

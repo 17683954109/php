@@ -1,0 +1,43 @@
+传统的流程控制语句再多次使用，混合嵌套时，容易混淆语句的结束位置，这是就可以使用替代语法，包括if,while,for,foreach和switch
+
+具体的展示如下：
+
+/*if:
+
+if($a==3):
+  echo 'ok';
+endif;
+*/
+
+/*while:
+
+while($a==2):
+  echo 'no';
+endwhile;
+*/
+
+/*for:
+
+for($i=1;$i<=100;$i++):
+  echo 'hello';
+endfor;
+*/
+
+/*foreach:
+
+foreach($a as $y):
+  echo $a;
+endforeach;
+*/
+
+/*switch:
+
+switch($a):
+  case '1':
+  break;
+  case '2':
+  break;
+  default:
+  echo 'error';
+endswitch;
+

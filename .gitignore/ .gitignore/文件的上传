@@ -1,3 +1,6 @@
+
+
+
 //html页面的配置
 
 
@@ -8,7 +11,7 @@
 	<title>选择上传的文件</title>
 </head>
 <body>
-<form action="resoult.php" method="post" enctype="multipart/form-data">
+<form action="resoult.php" method="post" enctype="multipart/form-data" accept="image/gif, image/jpeg">		//accept允许选择上传的文件类型
 	<input type="file" name="sss">
 	<input type="submit" name="tj" value="上传">
 </form>
@@ -53,3 +56,6 @@ function resoult($type,$path,$size,$name){	//参数分别为：允许上传的�
   //参数可灵活变更，函数更为灵活
 resoult(array('jpg','txt','png','zip','rar','gif','html'),'d:/UploadFile',20,'sss');
 ?>
+
+
+

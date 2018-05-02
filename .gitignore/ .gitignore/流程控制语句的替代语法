@@ -1,3 +1,5 @@
+
+
 传统的流程控制语句再多次使用，混合嵌套时，容易混淆语句的结束位置，这是就可以使用替代语法，包括if,while,for,foreach和switch
 
 具体的展示如下：
@@ -42,4 +44,6 @@ switch($a):
   default:
   echo 'error';
 endswitch;
+
+
 

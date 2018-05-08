@@ -40,5 +40,10 @@ endforeach;
 echo '<br/>';
 var_dump($list);
 
+//删除数组：
+unset($数组名);
+
+删除数组中的一个元素:
+unset($数组名[键名]);
 
 

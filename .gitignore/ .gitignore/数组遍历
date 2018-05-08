@@ -30,5 +30,15 @@ foreach($list as $value){
   echo $value.'<br/>';
 }
 
+或者，你想在数组遍历的时候对原数组重新赋值：
+引用赋值就可以了：&
+
+foreach($list as &$value):
+  $value=$value.$value;
+  echo $value.'<br/>';
+endforeach;
+echo '<br/>';
+var_dump($list);
+
 
 

@@ -12,7 +12,7 @@ for($i=0;$i<count($数组名);$i++){
 //foreach遍历数组
 
 foreach($数组名 as $key => $value){
-  echo $value.'<br/>';
+  echo $key.'=>'.$value.'<br/>';
 }
 
 如果只是默认的下标数组(数字数组),则：

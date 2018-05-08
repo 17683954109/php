@@ -1,0 +1,25 @@
+
+
+
+//传统的for循环遍历数组
+
+for($i=0;$i<count($数组名);$i++){
+  echo $数组名[$i].'<br/>';
+}
+
+而这种遍历无法处理关联数组,此时就需要使用专用的数组遍历语句foreach
+
+//foreach遍历数组
+
+foreach($数组名 as $key => $value){
+  echo $value.'<br/>';
+}
+
+如果只是默认的下标数组(数字数组),则：
+
+foreach($数组名 as $value){
+  echo $value.'<br/>';
+}
+
+
+

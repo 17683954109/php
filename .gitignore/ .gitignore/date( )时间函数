@@ -1,7 +1,7 @@
 //php date()函数,用来输出时间日期
 
 <?php
-date_default_timezone_set('UTC');   //设置时区为格林威治时间（世界标准时间）
+date_default_timezone_set('UTC');   //设置时区为格林威治时间（世界标准时间），或者直接使用中国标准时间PRC
 echo date('Y-m-d h:i:s');
 /*
 d - 表示月里的某天（01-31）

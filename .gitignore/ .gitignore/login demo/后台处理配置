@@ -1,0 +1,38 @@
+<?php
+header('Content-Type:text/html;charset=utf-8');
+date_default_timezone_set('utc');
+if($_POST['submit']=='提交'){
+    if ($_POST==''||$_POST==null) {
+        echo "填写有误";
+    }else{
+        $date=date("YmdHis",time()+8*3600);
+        $username = $_POST['username'];
+        $password =md5(sha1(sha1(md5($_POST['password']))));
+        $age = $_POST['age'];
+        $xueli =$_POST['xueli'];
+        $habits=implode(",",$_POST['habits']);
+        $form=$_POST['form'];
+    }
+$sql="insert into user(username,password,age,xueli,habits,form,createdate)value('$username','$password',$age,'$xueli','$habits','$form',$date)";
+mysql_connect('localhost','root','root');
+mysql_select_db('ssy');
+mysql_query($sql);
+$msg=mysql_affected_rows()==1 ? '创建成功!' : "注册失败!";
+mysql_close();
+echo "<script>alert('$msg');location.href='reg.php'</script>";
+}else{
+    $username = $_POST['username'];
+    $age = $_POST['age'];
+    $xueli =$_POST['xueli'];
+    $habits=implode(",",$_POST['habits']);
+    $form=$_POST['form'];
+    $id=$_GET['id'];
+    $sql="update user set username='$username',age=$age,xueli='$xueli',habits='$habits',form='$form' where id='$id'";
+    mysql_connect('localhost','root','root');
+    mysql_select_db('ssy');
+    mysql_query($sql);
+    $msg=mysql_affected_rows()==1 ? '修改成功!' : "修改失败!";
+    mysql_close();
+    echo "<script>alert('$msg');location.href='reg.php'</script>";
+}
+?>

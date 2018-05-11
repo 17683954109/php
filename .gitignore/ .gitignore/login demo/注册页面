@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<style>
+    p{width: 800px;text-align: center;font-size: 14px;height: 50px;line-height: 50px;margin: 0 auto}
+    div{width: 800px;text-align: left;margin: 0 auto}
+</style>
+<body>
+    <p>用户注册</p>
+    <form action="post.php" method="post">
+    <div class="item">用户名：<input type="text" name="username"></div>
+    <div class="item">密码：<input type="password" name="password"></div>
+    <div class="item">年龄:<input type="text" name="age"></div>
+    <div class="item">学历：
+        <select name="xueli">
+            <option>请选择：</option>
+            <option value="小学">小学</option>
+            <option value="初中">初中</option>
+            <option value="高中">高中</option>
+            <option value="专科">专科</option>
+            <option value="本科">本科</option>
+            <option value="研究生">研究生</option>
+        </select>
+    </div>
+    <div class="item">爱好：<input type="checkbox" name="habits[]" value="篮球">篮球<input type="checkbox" name="habits[]" value="音乐">音乐<input type="checkbox" name="habits[]" value="游戏">游戏</div>
+    <div class="item">来自:<input type="text" name="form"></div>
+    <div class="item"><input type="submit" name="submit" value="提交"></div>
+    </form>
+    <table style="width: 800px; padding: 0; margin-top: 10px" align="center" bgcolor="#ffffff" border="#666666 solid 1px">
+        <tr>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">用户ID</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">用户名</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">年龄</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">学历</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">来自</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">兴趣</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">操作</td>
+        </tr>
+        <?php
+        mysql_connect('localhost','root','root');
+        mysql_select_db('ssy');
+        $sql='select * from user order by createdate desc';
+        $info=mysql_query($sql);
+        while ($rs=mysql_fetch_row($info)) {
+        ?>
+        <tr>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[0]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[1]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[3]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[4]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[6]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[5]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><a href="res.php?change=<?=$rs[0]?>" onclick="change()">修改&nbsp;</a><a href="res.php?id=<?=$rs[0]?>" onclick="return confirm('你确定要删除吗？')">删除</a></td>
+        </tr>
+        <?php
+        };
+        mysql_close();
+        ?>
+    </table>
+</body>
+</html>

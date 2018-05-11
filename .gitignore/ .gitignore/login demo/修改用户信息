@@ -1,0 +1,147 @@
+<?php
+header('Content-Type:text/html;charset=utf-8');
+if (!empty($_GET['id'])) {
+	mysql_connect('localhost','root','root');
+	mysql_select_db('ssy');
+	$id=$_GET['id'];
+	$sql="delete from user where id={$id}";
+	mysql_query($sql);
+	$result=mysql_affected_rows();
+	if ($result>=1) {
+		echo "<script>alert('删除成功！');location.href='reg.php'</script>";
+	}else{
+		echo "<script>alert('删除失败！');location.href='reg.php'</script>";
+	}
+}
+?>
+<?php
+if(!empty($_GET['change'])){
+	$conn=mysql_connect('localhost','root','root') or die('数据库连接失败');
+	mysql_select_db('ssy') or die('数据库不存在');
+	$id=$_GET['change'];
+	$sql="select * from user where id=$id";
+	$info=mysql_query($sql) or die('sql语法错误');
+	while($rs=mysql_fetch_row($info)){
+
+?>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<style>
+    p{width: 800px;text-align: center;font-size: 14px;height: 50px;line-height: 50px;margin: 0 auto}
+    div{width: 800px;text-align: left;margin: 0 auto}
+</style>
+<body>
+    <p>用户信息修改</p>
+    <form action="post.php?id=<?=$rs[0]?>" method="post">
+	<div class="item">用户ID：<?=$rs[0]?></div>
+    <div class="item">用户名：<input type="text" name="username" value="<?=$rs[1]?>"></div>
+	<div class="item">年龄:<input type="text" name="age" value="<?=$rs[3]?>"></div>
+	
+    <div class="item">学历：
+        <select name="xueli">
+		<?php
+		$xx='';
+		$cz='';
+		$gz='';
+		$zk='';
+		$bk='';
+		$yjs='';
+		switch($rs[4]){
+			case '小学':
+			$xx="selected";
+			break;
+			case '初中':
+			$cz="selected";
+			break;
+			case '高中':
+			$gz="selected";
+			break;
+			case '专科':
+			$zk="selected";
+			break;
+			case '本科':
+			$bk="selected";
+			break;
+			case '研究生':
+			$yjs="selected";
+			break;
+		}
+		echo '<option value="小学" '.$xx.'>小学</option>
+			<option value="初中" '.$cz.'>初中</option>
+            <option value="高中" '.$gz.'>高中</option>
+            <option value="专科" '.$zk.'>专科</option>
+            <option value="本科" '.$bk.'>本科</option>
+			<option value="研究生" '.$yjs.'>研究生</option>';
+		?>
+        </select>
+    </div>
+    <div class="item">爱好：
+	<?php
+	$check=explode(',',$rs[5]);
+	$lanqiu='';
+	$yinyue='';
+	$youxi='';
+	foreach($check as $value){
+		switch($value){
+			case '篮球':
+			$lanqiu='checked';
+			break;
+			case '音乐':
+			$yinyue='checked';
+			break;
+			case '游戏':
+			$youxi='checked';
+			break;
+		}
+	}
+	?>
+	<?php	
+	echo '<input type="checkbox" name="habits[]" value="篮球" '.$lanqiu.'>篮球<input type="checkbox" name="habits[]" value="音乐" '.$yinyue.'>音乐<input type="checkbox" name="habits[]" value="游戏" '.$youxi.'>游戏</div>';
+	echo '<div class="item">来自:<input type="text" name="form" value="'.$rs[6].'"></div>';
+	?>
+	<?php
+	echo '<div class="item"><input type="submit" name="submit" value="确认修改"></div>';
+	?>
+	<?php
+	}
+}
+	?>
+    </form>
+    <table style="width: 800px; padding: 0; margin-top: 10px" align="center" bgcolor="#ffffff" border="#666666 solid 1px">
+        <tr>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">用户ID</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">用户名</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">年龄</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">学历</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">来自</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">兴趣</td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px">操作</td>
+        </tr>
+        <?php
+        mysql_connect('localhost','root','root');
+        mysql_select_db('ssy');
+        $sql='select * from user order by createdate desc';
+        $info=mysql_query($sql);
+        while ($rs=mysql_fetch_row($info)) {
+        ?>
+        <tr>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[0]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[1]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[3]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[4]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[6]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><?=$rs[5]?></td>
+            <td bgcolor="#ffffff" align="center" style="padding: 0; margin:0;border: none;border-right: #666666 solid 1px;border-top: #666666 solid 1px"><a href="res.php?change=<?=$rs[0]?>" onclick="change()">修改&nbsp;</a><a href="res.php?id=<?=$rs[0]?>" onclick="return confirm('你确定要删除吗？')">删除</a></td>
+        </tr>
+        <?php
+		};
+		mysql_close();
+        ?>
+	</table>
+	<div style="width:500px;height:100px;margin:0 auto;text-align:center;line-height:100px"><a href='reg.php'>返回注册页面</a></div>
+</body>
+</html>

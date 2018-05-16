@@ -1,0 +1,12 @@
+
+//字节流形式下载文件
+
+header('Content-Type: application/octet-stream');
+header('Content-Disposition: attachment; filename="ITblog.ppt"');
+header('Content-Transfer-Encoding: binary');
+readfile('9.ppt');
+
+//路径访问下载方式
+
+header('Content-Disposition:attachment;filename="aguagh.ppt"');  //告诉浏览器此时是一个文件下载页面，和要下载的文件名
+header('location:http://localhost/server/9.ppt');       //要下载的文件的访问地址

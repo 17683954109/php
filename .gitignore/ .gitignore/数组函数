@@ -72,7 +72,7 @@ $arr=['img2','img5','img10','img12'];
 
 
 
-usort('回调函数',$arr);
+usort($arr,'回调函数');
 
 例：
 
@@ -81,7 +81,7 @@ $arr=array(
   array('name'=>'李四','age'=>17,'sex'=>'男'),
   array('name'=>'王二','age'=>10,'sex'=>'男'),
 );
-usort('callback',$arr);
+usort($arr,'show');
 
   function show($a,$b){
     if($a['age']<$b['age']){

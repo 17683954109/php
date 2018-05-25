@@ -1,5 +1,5 @@
 
-复制以下代码到css代码的开始处（可滚动，但不显示滚动条）
+复制以下代码到css代码的开始处（可滚动，但不显示滚动条），同时兼容IE浏览器
 
 ::-webkit-scrollbar{display: none;}
 html {
